@@ -1,0 +1,119 @@
+<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Naelluxe</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#121212;--nav:rgba(18,18,18,.92);--card:#1c1c1e;--hov:#262629;--ac:#818cf8;--acs:rgba(129,140,248,.14);--bd:rgba(255,255,255,.08);--tx:#ececf1;--mu:#8b8b96;--nh:64px;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:calc(var(--nh) + env(safe-area-inset-top,0px) + 8px)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+button{background:none;border:0;cursor:pointer;font:inherit;color:inherit}a{text-decoration:none;color:inherit}[hidden]{display:none!important}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:40px 40px}
+.nav{position:fixed;top:0;left:0;right:0;height:calc(var(--nh) + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) 20px 0;background:var(--nav);backdrop-filter:blur(20px);border-bottom:1px solid var(--bd);z-index:1000;display:flex;align-items:center;justify-content:space-between}
+.l,.r,.links{display:flex;align-items:center;gap:6px}.l{gap:10px}
+.brand{display:flex;align-items:center;gap:10px}.bm{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#818cf8,#6366f1);display:flex;align-items:center;justify-content:center;font:800 15px Syne,sans-serif;color:#fff}
+.bn{font:700 18px Syne,sans-serif}.bn b{color:var(--ac)}
+.links a{padding:8px 16px;border-radius:8px;font-size:14px;font-weight:500;color:var(--mu);transition:.2s}.links a:hover{color:var(--tx);background:var(--acs)}
+.ib{position:relative;width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--mu)}.ib:hover{color:var(--tx);background:var(--hov)}
+.mt{display:none}.dot{position:absolute;top:7px;right:8px;width:7px;height:7px;background:#ef4444;border-radius:50%}.dv{width:1px;height:22px;background:var(--bd);margin:0 2px}
+.pt{display:flex;align-items:center;gap:8px;padding:4px 10px 4px 4px;border-radius:40px;border:1px solid var(--bd);font-size:13px;font-weight:600}.pt:hover{background:var(--hov)}
+.av{width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:50% 25%;background:var(--hov)}
+.pw{position:relative}.panel{position:absolute;top:calc(100% + 10px);right:0;background:var(--card);border:1px solid var(--bd);border-radius:14px;box-shadow:0 24px 64px rgba(0,0,0,.7);overflow:hidden;opacity:0;transform:translateY(-10px) scale(.97);pointer-events:none;transition:.25s;max-width:calc(100vw - 24px)}
+.panel.open{opacity:1;transform:none;pointer-events:auto}.sb{padding:10px 12px;border-bottom:1px solid var(--bd)}.sb input{width:100%;background:none;border:0;outline:0;color:var(--tx);font-size:14px}
+.pn{padding:8px;max-height:260px;overflow-y:auto;font-size:13px;color:var(--mu)}.ph{display:flex;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--bd);font-size:13px;font-weight:600}.ph a{color:var(--ac);font-size:11px;cursor:pointer;font-weight:500}
+.pu{display:flex;gap:10px;align-items:center;padding:14px;border-bottom:1px solid var(--bd)}.pu .av{width:40px;height:40px}.pu b{display:block;font-size:14px}.pu small{color:var(--mu);font-size:11px}
+.mi{display:block;padding:11px 14px;font-size:13px;font-weight:500}.mi:hover{background:var(--hov)}
+main{padding-top:var(--nh)}.wrap{max-width:900px;margin:0 auto;padding:40px 20px 70px}
+.hero{text-align:center;padding:30px 0}#ty{font:800 clamp(26px,5vw,44px) Syne,sans-serif;min-height:1.3em;margin-bottom:10px}
+.cur{display:inline-block;width:3px;height:1em;background:var(--ac);margin-left:3px;vertical-align:middle;animation:b 1s step-end infinite}@keyframes b{50%{opacity:0}}
+.hero p{color:var(--mu);font-size:15px;margin-bottom:28px}
+.soc{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.sb2{display:flex;align-items:center;height:52px;width:52px;padding:0 16px;border-radius:50px;color:#a8a8b3;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);overflow:hidden;transition:all .45s cubic-bezier(.175,.885,.32,1.275)}
+.sb2 svg{flex:none;transition:transform .5s}.bt{font-size:14px;font-weight:600;white-space:nowrap;margin-left:12px;opacity:0;transform:translateX(-12px);transition:.35s;overflow:hidden;text-overflow:ellipsis}
+.sb2:hover{width:175px;color:#fff;transform:translateY(-4px)}.sb2:hover .bt{opacity:1;transform:none}.sb2:hover svg{transform:rotate(360deg)}
+.ig:hover{background:linear-gradient(45deg,#f09433,#dc2743,#bc1888);border-color:#bc1888}.tt:hover{background:#000;border-color:#25f4ee}.ch:hover{background:#128C7E;border-color:#128C7E}.sp:hover{background:#1DB954;border-color:#1DB954}
+h2{font:800 20px Syne,sans-serif;margin:34px 0 14px}h3{font-size:15px}.mu,.m{color:var(--mu);font-size:13px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:18px;margin-bottom:16px}
+.pl{display:flex;gap:20px;align-items:center}.cv{width:150px;height:170px;flex:none;border-radius:12px;background:#0d0d0d;display:flex;align-items:center;justify-content:center;overflow:hidden}.cv img{width:100%;height:100%;object-fit:contain}
+.pi{flex:1;min-width:0}.tt2{font:800 22px Syne,sans-serif}.ta{color:var(--mu);margin-bottom:14px}
+input[type=range]{width:100%;accent-color:var(--ac)}.tm{display:flex;justify-content:space-between;font-size:12px;color:var(--mu)}
+.ct{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:8px}.ct button{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center}.ct .big{width:52px;height:52px;background:var(--ac);color:#111}
+.lh{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}pre{position:relative;white-space:pre-wrap;font:inherit;line-height:1.8;max-height:320px;overflow-y:auto;color:#cfcfd8}
+.btn,.sm{display:inline-block;padding:9px 16px;border-radius:10px;background:var(--ac);color:#111;font-size:13px;font-weight:600;cursor:pointer}.sm{background:var(--acs);color:var(--ac);padding:6px 12px}
+.si{display:flex;align-items:center;gap:12px;padding:8px;border-radius:10px;cursor:pointer;color:var(--tx)}.si:hover,.si.on{background:var(--hov)}.si img{width:42px;height:42px;border-radius:8px;object-fit:cover;background:#0d0d0d}.si small{display:block;color:var(--mu)}.si div{flex:1;min-width:0}.x{color:#f87171;font-size:12px}
+label{display:block;font-size:12px;color:var(--mu);margin-bottom:12px}label input:not([type=file]),textarea{display:block;width:100%;margin-top:5px;padding:10px 12px;background:var(--bg);border:1px solid var(--bd);border-radius:10px;color:var(--tx);font:inherit;font-size:14px}label input[type=file]{margin-top:6px}
+.pp2{display:flex;align-items:center;gap:14px;margin-bottom:16px}.pp2 .av{width:72px;height:72px}.back{color:var(--ac);font-size:14px}
+body:not(.admin) .adm{display:none}
+.av.lg{width:34px;height:34px;border-radius:10px}.av.hp{display:block;width:120px;height:120px;margin:0 auto 26px;border:2px solid var(--bd);box-shadow:0 0 40px var(--acs)}
+.ln{padding:5px 8px;color:#6b6b76;cursor:pointer;border-left:2px solid transparent;transition:.3s}.ln.on{color:#fff;font-weight:600;border-left-color:var(--ac)}
+@media(max-width:700px){.links{display:none;position:fixed;top:calc(var(--nh) + env(safe-area-inset-top,0px));left:0;right:0;background:var(--nav);flex-direction:column;padding:10px;border-bottom:1px solid var(--bd)}.links.show{display:flex}.mt{display:flex}.pt span{display:none}.pl{flex-direction:column}.cv{width:100%;height:220px}.pi{width:100%}}
+footer{text-align:center;padding:24px;color:var(--mu);font-size:13px;border-top:1px solid var(--bd)}
+</style></head><body>
+<nav class="nav"><div class="l"><button class="ib mt" id="mt" aria-label="Menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button><a href="#home" class="brand"><img class="av lg" alt=""><span class="bn">Nael<b>luxe</b></span></a></div>
+<div class="links"><a href="#home">Home</a><a href="#music">Music</a></div>
+<div class="r">
+<div class="pw"><button class="ib" aria-label="Cari"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="6.5" cy="6.5" r="4.5"/><path d="M10 10l3 3"/></svg></button><div class="panel" style="width:280px"><div class="sb"><input id="q" placeholder="Cari lagu…" autocomplete="off"></div><div class="pn" id="sr"></div></div></div>
+<div class="pw"><button class="ib" aria-label="Notifikasi"><i class="dot" id="dot"></i><svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"><path d="M8 1.5A4.5 4.5 0 0 0 3.5 6v3.5L2 11h12l-1.5-1.5V6A4.5 4.5 0 0 0 8 1.5zM6.5 11.5a1.5 1.5 0 0 0 3 0"/></svg></button><div class="panel" style="width:270px"><div class="ph"><span>Notifikasi</span><a id="mr">Tandai dibaca</a></div><div class="pn">🎉 <b>Selamat datang!</b> Naelluxe siap.</div></div></div>
+<i class="dv"></i>
+<div class="pw"><button class="pt"><img class="av" alt=""><span>Naelluxe</span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3.5 5.5L7 9l3.5-3.5"/></svg></button><div class="panel" style="width:230px"><div class="pu"><img class="av" alt=""><div><b>Naelluxe</b><small id="role">Pengunjung</small></div></div><a class="mi" href="#profil">✎ Ubah Profil &amp; Tambah Lagu</a><a class="mi" href="#music">♫ Music</a></div></div>
+</div></nav>
+<main>
+<div id="vHome"><div class="wrap">
+<section id="home" class="hero"><div id="ty"></div><p>Personal Space • Music</p><img class="av hp" alt=""><div class="soc" id="soc"></div></section>
+<section id="music"><h2>Now Playing</h2>
+<div class="card pl"><div class="cv"><img id="cov" alt=""></div><div class="pi"><div class="tt2" id="tt"></div><div class="ta" id="ta"></div><input type="range" id="sk" value="0" min="0" max="100" step="0.1"><div class="tm"><span id="t1">0:00</span><span id="t2">0:00</span></div><div class="ct"><button id="pv" aria-label="Sebelumnya"></button><button id="pp" class="big" aria-label="Putar"></button><button id="nx" aria-label="Berikutnya"></button></div></div></div>
+<div class="card"><div class="lh"><h3>Lirik</h3></div><pre id="lt"></pre></div>
+<div class="card" id="sl"></div></section></div></div>
+<div id="vProf" hidden><div class="wrap"><a href="#home" class="back">← Kembali</a><h2>Ubah Profil</h2>
+<div class="card" id="lg"><label>Password admin<input type="password" id="pw" autocomplete="current-password"></label><button class="btn" id="li">Masuk admin</button> <span class="m" id="m0"></span></div>
+<div class="card adm"><div class="pp2"><img class="av" alt=""><label class="btn" style="margin:0">Ganti foto<input type="file" id="fp" accept="image/*" hidden></label><span class="m" id="fn"></span></div><label>Nama Instagram<input id="f-ig" placeholder="username"></label><label>Nama TikTok<input id="f-tt" placeholder="username"></label><label>Link Saluran<input id="f-ch" placeholder="https://…"></label><label>Akun Spotify (link atau username)<input id="f-sp"></label><button class="btn" id="sv">Simpan permanen</button> <span class="m" id="m1"></span></div>
+<h2 class="adm">Tambah Lagu</h2>
+<div class="card adm"><label>Link Spotify atau judul lagu<input id="s-q" placeholder="https://open.spotify.com/track/… atau Judul Artis"></label><label>Link mp3 penuh (opsional; agar lirik berjalan sinkron)<input id="s-au" placeholder="/lagu.mp3"></label><button class="btn" id="sa">Cari &amp; tambahkan</button> <span class="m" id="m2"></span></div>
+</div></div>
+</main><footer>© 2026 Naelluxe</footer>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],E=(t,p,c)=>{const e=Object.assign(document.createElement(t),p||{});(c||[]).forEach(x=>e.append(x));return e};
+const P=d=>`<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">${d}</svg>`,Q=d=>`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const I={play:P('<path d="M8 5v14l11-7z"/>'),pause:P('<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>'),prev:P('<path d="M6 6h2v12H6zM20 6v12L9.5 12z"/>'),next:P('<path d="M16 6h2v12h-2zM4 6l10.5 6L4 18z"/>')};
+const S={ig:Q('<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/>'),tt:Q('<path d="M14 3v12.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.4 2.6 2 4.2 5 4.5"/>'),ch:Q('<path d="M3 11v3l12 5V6zM15 9.5a3 3 0 0 1 0 5M6 15l1.5 5"/>'),sp:Q('<circle cx="12" cy="12" r="9"/><path d="M7 9.5c3.5-1 7-.6 10 1M7.5 12.7c3-.8 6-.5 8.5 1M8 15.7c2.4-.6 4.6-.4 6.6.7"/>')};
+const BI={id:'k',title:'K.',artist:'Cigarettes After Sex',src:'/k.mp3',full:true,cover:'/cover-k.png'};
+const D={profile:{ig:'',tt:'',ch:'https://whatsapp.com/channel/0029Vb8aXWFCXC3TNiGtI42l',sp:'',photo:'/profile.jpg'},songs:[BI],lyrics:{}};
+let db=null,asset=null,admin=false,cur=0,curId='';const au=new Audio(),fm=t=>isFinite(t)?Math.floor(t/60)+':'+String(Math.floor(t%60)).padStart(2,'0'):'0:00',ok=h=>/^https?:\/\//i.test(h||'')?h:'',u=v=>(v||'').replace(/^@/,'').trim();
+function links(){const p=D.profile,sp=ok(p.sp)||(p.sp?'https://open.spotify.com/user/'+encodeURIComponent(p.sp):'');
+const L=[['ig','Instagram',p.ig&&'https://instagram.com/'+u(p.ig),p.ig&&'@'+u(p.ig)],['tt','TikTok',p.tt&&'https://tiktok.com/@'+u(p.tt),p.tt&&'@'+u(p.tt)],['ch','Saluran',ok(p.ch),'Saluran'],['sp','Spotify',sp,ok(p.sp)?'Spotify':p.sp]];
+const w=$('#soc');w.textContent='';L.forEach(([k,n,h,t])=>{const a=E('a',{className:'sb2 '+k,href:h||'#home',rel:'noopener'});if(h)a.target='_blank';a.innerHTML=S[k];a.append(E('span',{className:'bt',textContent:t||n}));w.append(a)})}
+const av=()=>$$('.av').forEach(i=>i.src=D.profile.photo);
+function fill(){const p=D.profile;if(document.activeElement.tagName==='INPUT')return;$('#f-ig').value=p.ig||'';$('#f-tt').value=p.tt||'';$('#f-ch').value=p.ch||'';$('#f-sp').value=p.sp||''}
+function list(){const q=$('#q').value.toLowerCase();[$('#sl'),$('#sr')].forEach(box=>{box.textContent='';D.songs.forEach((s,i)=>{if(box.id==='sr'&&q&&!(s.title+' '+(s.artist||'')).toLowerCase().includes(q))return;
+const r=E('div',{className:'si'+(i===cur?' on':''),onclick:()=>load(i,true)},[E('img',{src:s.cover,alt:''}),E('div',{},[E('b',{textContent:s.title}),E('small',{textContent:s.artist||''})])]);
+if(admin&&box.id==='sl'&&s.id!=='k'){const b=E('button',{className:'x',textContent:'✕',title:'Hapus',onclick:e=>{e.stopPropagation();if(b.dataset.c)del(s);else{b.dataset.c=1;b.textContent='Hapus?'}}});r.append(b)}box.append(r)});if(!box.children.length)box.textContent='Tidak ada hasil'})}
+let LR=[],cs=-1;
+function lyr(){const s=D.songs[cur];if(!s)return;const t=(D.lyrics[s.id]||'').trim(),b=$('#lt');LR=[];cs=-1;b.textContent='';
+if(/\[\d+:\d+(\.\d+)?\]/.test(t)){t.split('\n').forEach(l=>{const x=l.replace(/\[[^\]]*\]/g,'').trim();[...l.matchAll(/\[(\d+):(\d+(?:\.\d+)?)\]/g)].forEach(a=>{const n=+a[1]*60+ +a[2];LR.push({t:n,e:E('div',{className:'ln',textContent:x||'♪',onclick:()=>{au.currentTime=n;au.play().catch(()=>{})}})})})});LR.sort((p,q)=>p.t-q.t).forEach(r=>b.append(r.e))}
+else b.textContent=t||(D.lyrics[s.id]===undefined?'Mencari lirik…':'Lirik tidak ditemukan.')}
+function sync(){if(!LR.length)return;let i=-1;while(i+1<LR.length&&LR[i+1].t<=au.currentTime)i++;if(i===cs)return;cs=i;LR.forEach((r,k)=>r.e.classList.toggle('on',k===i));if(i>=0){const b=$('#lt'),e=LR[i].e;b.scrollTo({top:e.offsetTop-b.clientHeight/2+e.clientHeight/2,behavior:'smooth'})}}
+function load(i,play){cur=i;const s=D.songs[i];if(!s)return;if(curId!==s.id){au.src=s.src;curId=s.id}$('#cov').src=s.cover;$('#tt').textContent=s.title;$('#ta').textContent=s.artist||'';lyr();getLy(s);list();if(play)au.play().catch(()=>{})}
+const LT=new Set(),H=()=>({'x-admin':sessionStorage.getItem('adm')||''});
+async function api(a,o){const r=await fetch('/api/app?'+a,o),j=await r.json().catch(()=>({}));if(!r.ok)throw Error(j.error||r.status);return j}
+const persist=async m=>{try{await api('a=save',{method:'POST',headers:{...H(),'Content-Type':'application/json'},body:JSON.stringify({profile:D.profile,songs:D.songs.filter(s=>s.id!=='k')})});return true}catch(e){m.textContent='Gagal: '+e.message;return false}};
+async function getLy(s){if(D.lyrics[s.id]!==undefined||LT.has(s.id))return;LT.add(s.id);try{const j=await api('a=lyrics&artist='+encodeURIComponent(s.artist||'')+'&title='+encodeURIComponent(s.title)),st=x=>x.replace(/\[[^\]]*\]\s*/g,'');D.lyrics[s.id]=s.full?(j.synced||j.plain||''):(j.plain||st(j.synced||''))}catch(e){D.lyrics[s.id]=''}if(D.songs[cur]?.id===s.id)lyr()}
+const del=async s=>{D.songs=D.songs.filter(x=>x.id!==s.id);await persist($('#m2'));load(0,false)};
+au.ontimeupdate=()=>{$('#sk').value=au.duration?au.currentTime/au.duration*100:0;$('#t1').textContent=fm(au.currentTime);sync()};au.onloadedmetadata=()=>$('#t2').textContent=fm(au.duration);
+au.onplay=au.onpause=()=>$('#pp').innerHTML=au.paused?I.play:I.pause;au.onended=()=>load((cur+1)%D.songs.length,true);
+$('#sk').oninput=e=>{if(au.duration)au.currentTime=e.target.value/100*au.duration};$('#pp').onclick=()=>au.paused?au.play():au.pause();
+$('#pv').onclick=()=>load((cur-1+D.songs.length)%D.songs.length,true);$('#nx').onclick=()=>load((cur+1)%D.songs.length,true);
+$('#pv').innerHTML=I.prev;$('#nx').innerHTML=I.next;$('#pp').innerHTML=I.play;$('#q').oninput=list;
+const adm=async()=>{try{admin=!!(await api('a=login',{headers:H()})).ok}catch(e){admin=false}document.body.classList.toggle('admin',admin);$('#lg').hidden=admin;$('#role').textContent=admin?'Admin':'Pengunjung';$('#m0').textContent=admin||!sessionStorage.getItem('adm')?'':'Password salah';list()};
+$('#li').onclick=()=>{sessionStorage.setItem('adm',$('#pw').value);adm()};
+const shrink=f=>new Promise(r=>{const i=new Image();i.onload=()=>{const c=document.createElement('canvas'),k=Math.min(i.width,i.height);c.width=c.height=256;c.getContext('2d').drawImage(i,(i.width-k)/2,(i.height-k)/4,k,k,0,0,256,256);r(c.toDataURL('image/jpeg',.85))};i.src=URL.createObjectURL(f)});
+$('#fp').onchange=()=>$('#fn').textContent=$('#fp').files[0]?.name||'';
+$('#sv').onclick=async()=>{const m=$('#m1'),f=$('#fp').files[0];m.textContent='Menyimpan…';const o=D.profile,p={...o,ig:u($('#f-ig').value),tt:u($('#f-tt').value),ch:$('#f-ch').value.trim(),sp:$('#f-sp').value.trim()};if(f)p.photo=await shrink(f);D.profile=p;if(await persist(m)){links();av();m.textContent='Tersimpan permanen ✓'}else D.profile=o};
+$('#sa').onclick=async()=>{const m=$('#m2'),q=$('#s-q').value.trim();if(!q){m.textContent='Isi link Spotify atau judul lagu';return}m.textContent='Mencari…';
+try{const j=await api('a=song&q='+encodeURIComponent(q),{headers:H()});if(!j.title)throw Error('Lagu tidak ditemukan');const a2=$('#s-au').value.trim(),n={id:'s'+Date.now(),title:j.title,artist:j.artist,cover:j.cover||BI.cover,src:a2||j.previewUrl,full:!!a2};if(!n.src)throw Error('Lagu ini tidak punya preview, isi link mp3');D.songs.push(n);if(await persist(m)){m.textContent='Ditambahkan ✓';$('#s-q').value=$('#s-au').value='';list()}else D.songs.pop()}catch(e){m.textContent='Gagal: '+e.message}};
+$$('.pw>button').forEach(b=>b.onclick=e=>{e.stopPropagation();const p=b.nextElementSibling,o=p.classList.contains('open');$$('.panel').forEach(x=>x.classList.remove('open'));if(!o)p.classList.add('open')});
+document.addEventListener('click',e=>{if(!e.target.closest('.panel')||e.target.closest('a'))$$('.panel').forEach(x=>x.classList.remove('open'))});
+$('#mr').onclick=()=>$('#dot').hidden=true;$('#mt').onclick=()=>$('.links').classList.toggle('show');$$('.links a').forEach(a=>a.onclick=()=>$('.links').classList.remove('show'));
+function route(){const p=location.hash==='#profil';$('#vProf').hidden=!p;$('#vHome').hidden=p;if(p){fill();scrollTo(0,0)}else if(location.hash)document.getElementById(location.hash.slice(1))?.scrollIntoView()}
+addEventListener('hashchange',route);
+const tx=['Halo, selamat datang','Welcome to Naelluxe','Music • Life'];let ti=0,ci=0,dl=false;
+function type(){const c=tx[ti];$('#ty').innerHTML=(dl?c.substring(0,ci-1):c.substring(0,ci+1))+'<span class="cur"></span>';if(!dl&&ci===c.length){dl=true;setTimeout(type,1600);return}if(dl&&ci===0){dl=false;ti=(ti+1)%tx.length;setTimeout(type,350);return}ci+=dl?-1:1;setTimeout(type,dl?35:80)}
+links();av();load(0,false);route();type();
+adm();api('a=get').then(d=>{if(d.profile)D.profile={...D.profile,...d.profile};if(d.songs)D.songs=[BI,...d.songs];links();av();fill();load(0,false)}).catch(()=>{});
+</script></body></html>
