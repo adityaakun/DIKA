@@ -1,11 +1,15 @@
-// Naelluxe API (Vercel serverless). Butuh env: ADMIN_PASSWORD + Upstash Redis (KV_REST_API_URL/TOKEN)
-const U = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
-const T = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
-const PASS = process.env.ADMIN_PASSWORD || '';
+// Naelluxe API (Vercel serverless). Butuh env: ADMIN_PASSWORD + Upstash Redis (REST URL & token)
+const E = process.env;
+const pick = (re, not) => Object.keys(E).find(k => re.test(k) && E[k] && !(not && not.test(k)));
+const uk = pick(/(REST_API_URL|REDIS_REST_URL)$/i);                       // KV_REST_API_URL / UPSTASH_REDIS_REST_URL / <PREFIX>_...
+const tk = pick(/(REST_API_TOKEN|REDIS_REST_TOKEN)$/i, /READ_ONLY/i);
+const U = uk && E[uk], T = tk && E[tk], HAS = !!(U && T);
+const PASS = E.ADMIN_PASSWORD || '';
+const noRedis = () => 'Redis belum terpasang. Variabel terdeteksi: ' + (Object.keys(E).filter(k => /redis|kv_|upstash|storage/i.test(k)).join(', ') || '(tidak ada)');
 const KEY = 'naelluxe', auth = { Authorization: 'Bearer ' + T };
 
 const J = async (u, o) => { const r = await fetch(u, o); if (!r.ok) throw Error(r.status); return r.json(); };
-const rd = async () => { if (!U) return {}; const j = await J(`${U}/get/${KEY}`, { headers: auth }); return j.result ? JSON.parse(j.result) : {}; };
+const rd = async () => { if (!HAS) return {}; const j = await J(`${U}/get/${KEY}`, { headers: auth }); return j.result ? JSON.parse(j.result) : {}; };
 const wr = async b => { const r = await fetch(`${U}/set/${KEY}`, { method: 'POST', headers: auth, body: JSON.stringify(b) }); if (!r.ok) throw Error('Redis ' + r.status); };
 
 const itunes = async q => {
@@ -49,12 +53,12 @@ module.exports = async (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
   try {
     if (a === 'login') return res.json({ ok });
-    if (a === 'get') return res.json({ ...await rd(), persist: !!U });
+    if (a === 'get') return res.json({ ...await rd(), persist: HAS });
     if (a === 'lyrics') { res.setHeader('Cache-Control', 'public, s-maxage=86400'); return res.json(await getLyrics(q.artist || '', q.title || '')); }
     if (!ok) return res.status(401).json({ error: 'Password admin salah atau ADMIN_PASSWORD belum diatur' });
     if (a === 'song') return res.json((await getSong(String(q.q || ''))) || {});
     if (a === 'save' && req.method === 'POST') {
-      if (!U) return res.status(500).json({ error: 'Upstash Redis belum terpasang' });
+      if (!HAS) return res.status(500).json({ error: noRedis() });
       const b = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
       await wr({ profile: b.profile, songs: b.songs });
       return res.json({ ok: true });
